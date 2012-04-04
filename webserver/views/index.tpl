@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Welcome to WebTeX</title>
-	<link href="/static/blueprint.css" rel="stylesheet">
+	<link href="/static/3rdparty/blueprint/blueprint.css" rel="stylesheet">
 	<link href="http://fonts.googleapis.com/css?family=Crete+Round" rel="stylesheet" type="text/css">
 	<link href="/static/style.css" rel="stylesheet">
 </head>

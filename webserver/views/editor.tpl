@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>WebTex</title>
+	<title>{{doc_name}} - WebTeX</title>
 	<link href="/static/style.css" rel="stylesheet">
-	<script src="/static/ace.js" charset="utf-8"></script>
-	<script src="/static/mode-latex.js" charset="utf-8"></script>
-	<script src="/static/jquery-1.7.2.min.js"></script>
+	<script src="/static/3rdparty/ace/ace.js" charset="utf-8"></script>
+	<script src="/static/3rdparty/ace/mode-latex.js" charset="utf-8"></script>
+	<script src="/static/3rdparty/jquery/jquery-1.7.2.min.js"></script>
 	<script>
 	var docName = '{{doc_name}}';
 	</script>
@@ -19,6 +19,5 @@
 	<div id="editor">{{doc_content}}</div>
 	<iframe id="view" src="/doc/{{doc_name}}/pdf"
 		    frameborder="0" id="view"></iframe>
-
 </body>
 </html>
