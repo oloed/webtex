@@ -36,8 +36,8 @@ c = conn.cursor()
 install(SQLitePlugin(dbfile = '/tmp/example.db'))
 
 # Get your app key and secret from the Dropbox developer website
-APP_KEY = 'gkucvfe9xptshud'
-APP_SECRET = '08nvepsv953j8b9'
+APP_KEY = os.environ['DROPBOX_APP_KEY']
+APP_SECRET = os.environ['DROPBOX_SECRET_KEY']
 
 # ACCESS_TYPE should be 'dropbox' or 'app_folder' as configured for your app
 ACCESS_TYPE = 'app_folder'
@@ -56,9 +56,8 @@ def login(db):
 	db.execute('insert into login values (?,?)',[request_token.key,sqlite3.Binary(p)])
 
 	url = sess.build_authorize_url(request_token, 'http://localhost:8080/success')
-
-
 	redirect(url)
+
 
 @route('/success')
 def success(db):

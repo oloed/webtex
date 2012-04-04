@@ -32,8 +32,9 @@ import zipfile, StringIO, time
 from inmem import *
 
 # Get your app key and secret from the Dropbox developer website
-APP_KEY = 'gkucvfe9xptshud'
-APP_SECRET = '08nvepsv953j8b9'
+APP_KEY = os.environ['DROPBOX_APP_KEY']
+APP_SECRET = os.environ['DROPBOX_SECRET_KEY']
+COOKIE_KEY = os.environ['COOKIE_KEY']
 
 # ACCESS_TYPE should be 'dropbox' or 'app_folder' as configured for your app
 ACCESS_TYPE = 'app_folder'
@@ -42,7 +43,7 @@ ACCESS_TYPE = 'app_folder'
 sess = session.DropboxSession(APP_KEY, APP_SECRET, ACCESS_TYPE)
 
 def user_info():
-	token = request.get_cookie("access_token",secret="secretkey")
+	token = request.get_cookie("access_token",secret=COOKIE_KEY)
 	if token:
 		sess.set_token(token.key,token.secret)
 		cl = client.DropboxClient(sess)
@@ -52,7 +53,7 @@ def user_info():
 		return None
 
 def getDocs():
-	token = request.get_cookie("access_token",secret="secretkey")
+	token = request.get_cookie("access_token",secret=COOKIE_KEY)
 	if token:
 		sess.set_token(token.key,token.secret)
 		cl = client.DropboxClient(sess)
@@ -87,7 +88,7 @@ def get_doc(cl,temp):
 	return None
 
 def get_doc_content(doc_id):
-	token = request.get_cookie("access_token",secret="secretkey")
+	token = request.get_cookie("access_token",secret=COOKIE_KEY)
 	if token:
 		sess.set_token(token.key,token.secret)
 		cl = client.DropboxClient(sess)
@@ -100,7 +101,7 @@ def get_doc_content(doc_id):
 	return None
 
 def get_doc_pdf(doc_id):
-	token = request.get_cookie("access_token",secret="secretkey")
+	token = request.get_cookie("access_token",secret=COOKIE_KEY)
 	if token:
 		sess.set_token(token.key,token.secret)
 		cl = client.DropboxClient(sess)
@@ -113,7 +114,7 @@ def get_doc_pdf(doc_id):
 	return '???!?'
 
 def make_doc(docname, template=None):
-	token = request.get_cookie("access_token",secret="secretkey")
+	token = request.get_cookie("access_token",secret=COOKIE_KEY)
 	if token:
 		sess.set_token(token.key,token.secret)
 		cl = client.DropboxClient(sess)
@@ -130,7 +131,7 @@ def make_doc(docname, template=None):
 
 def put_doc(path, content):
 	print 'a'
-	token = request.get_cookie("access_token",secret="secretkey")
+	token = request.get_cookie("access_token",secret=COOKIE_KEY)
 	print 'b'
 	if token:
 		print 'c'
@@ -164,7 +165,7 @@ def zip_files(cl, zp, path):
 
 
 def zip_doc(doc_id):
-	token = request.get_cookie("access_token",secret="secretkey")
+	token = request.get_cookie("access_token",secret=COOKIE_KEY)
 	if token:
 		sess.set_token(token.key,token.secret)
 		cl = client.DropboxClient(sess)
