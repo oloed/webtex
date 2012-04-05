@@ -24,10 +24,9 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 from bottle import *
-from bottle_sqlite import SQLitePlugin
 # Include the Dropbox SDK libraries
 from dropbox import client, rest, session
-import sqlite3, cPickle, os
+import os
 import zipfile, StringIO, time
 from inmem import *
 
