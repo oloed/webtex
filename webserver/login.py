@@ -73,7 +73,7 @@ def success(db):
 		token = oauth.OAuthToken(item.attrs.key, item.attrs.secret)
 		access_token = sess.obtain_access_token(token)
 		cl = client.DropboxClient(sess)
-		response.set_cookie('access_token', access_token, secret=COOKIE_SECRET)
+		response.set_cookie('access_token', access_token, secret=COOKIE_KEY)
 		redirect('/doclist')
 	else:
 		return 'Something went wrong'
